@@ -1,10 +1,8 @@
 package com.yiibai.mybatis.models;
 
-import java.io.Serializable;
-
-public class Post implements Serializable{
+public class Post3 {
 	private int id;
-	private User user;
+	private User3 user;
 	private String title;
 	private String content;
 
@@ -16,11 +14,11 @@ public class Post implements Serializable{
 		this.id = id;
 	}
 
-	public User getUser() {
+	public User3 getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(User3 user) {
 		this.user = user;
 	}
 

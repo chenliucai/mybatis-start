@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+	<typeAliases>
+	<!--对应表的模板 对应的实体层  -->
+<!-- 		<typeAlias alias="User" type="com.yiibai.mybatis.models.User1" />
+ --><!-- 		<typeAlias alias="Post" type="com.yiibai.mybatis.models.Post" /> -->
+	</typeAliases>
+	<environments default="development">
+	    <environment id="development">
+		<transactionManager type="JDBC" />
+			<dataSource type="POOLED">  
+                            <property name="driver" value="com.mysql.jdbc.Driver" />
+			    <property name="url" value="jdbc:mysql://127.0.0.1:3306/yibai" />
+			    <property name="username" value="root" />
+			    <property name="password" value="123456" />
+                       </dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+	     <!-- // power by http://www.yiibai.com -->
+	     <!-- 对应xml mapping层 对应的查询语句 -->
+		<mapper resource="com/yiibai/mybatis/mapping/User4.xml" />
+		<mapper resource="com/yiibai/mybatis/mapping/Group4.xml" />
+		<mapper resource="com/yiibai/mybatis/mapping/UserGroup4.xml" />	
+		</mappers>
+		
+		
+		<!--多对多参考
+		<resultMap type="sy.model.User" id="userResultMap3" extends="BaseResultMap">
+		<collection property="userRoles" javaType="list" ofType="sy.model.UserRole">
+			<id property="id" column="userrole_id" />
+			<result column="role_id" property="roleId" />
+			<result property="userId" column="user_id" />
+
+			<association property="role" javaType="sy.model.Role">
+				<id property="id" column="role_id" />
+				<result property="text" column="role_text" />
+			</association>
+		</collection>
+	</resultMap>
+	<select id="getAll3" resultMap="userResultMap3">
+		SELECT
+		tuser.ID,
+		tuser.CREATEDATETIME,
+		tuser.MODIFYDATETIME,
+		tuser.`NAME`,
+		tuser.PWD,
+		tuser.CREATE_TIME,
+		tuser.UPDATE_TIME,
+		tuser_trole.ID userrole_id,
+		tuser_trole.ROLE_ID role_id,
+		tuser_trole.USER_ID user_id,
+		trole.ID role_id,
+		trole.TEXT role_text
+		FROM
+		tuser
+		JOIN tuser_trole ON tuser.ID = tuser_trole.USER_ID
+		JOIN trole ON tuser_trole.ROLE_ID = trole.ID
+	</select>  -->
+</configuration>
